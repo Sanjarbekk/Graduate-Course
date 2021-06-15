@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+
+        form{
+            width:700px;
+            padding: 50px;
+            background-color: white;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);}
+    </style>
+    <title>Show Student</title>
+</head>
+<body>
+<div layout:fragment="content">
+
+<form th:object="${student}">
+    <button type="button" class="close" aria-label="Close" onclick="window.location.href='/student/'">
+        <span aria-hidden="true">&times;</span>
+    </button>
+    <h2 style="text-align:center">Show Student</h2><br>
+    <table style="width: 100%;">
+        <tr>
+            <td><b>First Name</b></td>
+            <td><b>Last Name</b></td>
+        </tr>
+        <tr>
+            <td th:text="*{firstName}"></td>
+            <td th:text="*{lastName}"></td>
+        </tr>
+    </table>
+<hr>
+
+    <table style="width: 100%;">
+        <tr>
+            <td><b>Province</b></td>
+            <td><b>Faculty</b></td>
+            <td><b>Gender</b></td>
+        </tr>
+    <tr>
+        <td th:text="*{province.name}"></td>
+        <td th:text="*{faculty.name}"></td>
+        <td th:text="*{gender}"></td>
+    </tr>
+    </table>
+    <hr>
+    <table style="width: 100%;">
+        <tr>
+            <td colspan="4"><b>Marks</b></td>
+            <td><b>BirthDate</b></td>
+        </tr>
+        <tr>
+            <td><b>1-Course</b></td>
+            <td><b>2-Course</b></td>
+            <td><b>3-Course</b></td>
+            <td><b>4-Course</b></td>
+            <td><b></b></td>
+        </tr>
+        <tr>
+            <td th:text="*{marks.course_1}"></td>
+            <td th:text="*{marks.course_2}"></td>
+            <td th:text="*{marks.course_3}"></td>
+            <td th:text="*{marks.course_4}"></td>
+            <td  th:text="*{date}"></td>
+        </tr>
+    </table>
+
+    <hr>
+    <table style="width: 100%;">
+        <tr>
+            <td><b>Companies</b></td>
+            <td><b>Hobbies</b></td>
+            <td><b>Subjects</b></td>
+        </tr>
+        <tr>
+            <td>
+                <div th:each="company : ${student.companies}" th:text="${company.name}">
+                </div>
+            </td>
+            <td>
+                <div th:each="hobby : ${student.hobbies}" th:text="${hobby.name}">
+                </div>
+            </td>
+            <td>
+                <div th:each="subject : ${student.subjects}" th:text="${subject.name}">
+                </div>
+            </td>
+        </tr>
+    </table>
+</form>
+</div>
+</body>
+</html>

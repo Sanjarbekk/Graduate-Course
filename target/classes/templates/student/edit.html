@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <style>
+
+        form{
+            border: 1px solid #000;
+            width:750px;
+            padding: 50px;
+            background-color: white;
+            margin: 0 auto;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);}
+        .checkbox label, .radio label{
+            padding-left: 32px;
+        }
+
+        input {
+            margin: 10px 5%;
+            padding:10px;
+
+        }
+        .checkbox input{
+            width: 30px;
+            left: 0;
+            margin-left: 0px!important;
+        }
+
+        select{
+            margin: 10px;
+            padding:10px;
+            width: 90%;
+        }
+        button{
+            color: white;
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            background-color: #03A9F4;
+            padding: 8px 20px;
+            cursor: pointer;
+        }
+        .buttons-group{
+            width: 100%;
+            text-align: center;
+        }
+
+
+    </style>
+    <title>New Student</title>
+
+
+</head>
+<body>
+<div layout:fragment="content">
+
+    <form th:object="${studentDTO}" th:action="@{/student/update}" method="post">
+        <input type="number" th:field="*{id}" hidden>
+        <button type="button" class="close" aria-label="Close" onclick="window.location.href='/student/'">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        <h2 style="text-align:center">Edit Student</h2><br>
+        <table style="width: 100%;">
+            <tr>
+                <td><b>FirstName</b></td>
+                <td><b>LastName</b></td>
+            </tr>
+            <tr>
+                <td>
+                    <input  type="text" th:field="*{firstName}" required style="width: 90%">
+                </td>
+                <td>
+                    <input  type="text" th:field="*{lastName}" required style="width: 90%;">
+                </td>
+
+            </tr>
+        </table>
+        <hr>
+        <table style="width: 100%;">
+            <tr>
+                <td><b>Province</b></td>
+                <td><b>Faculty</b></td>
+                <td><b>Gender</b></td>
+            </tr>
+            <tr>
+
+                <td ><select th:field = "*{provinceId}">
+                    <option th:each="province : ${provinces}" th:value="${province.id}" th:text="${province.name}">
+                    </option>
+                </select></td>
+                <td ><select th:field = "*{facultyId}">
+                    <option th:each="i : ${faculties}" th:value="${i.id}" th:text="${i.name}">
+                    </option>
+                </select></td>
+                <td ><select th:field = "*{gender}">
+                    <option th:each="i : ${genders}" th:value="${i}" th:text="${i}">
+                    </option>
+                </select></td>
+            </tr>
+        </table>
+        <hr>
+
+        <label>Marks</label><br>
+        <table>
+            <tr>
+                <td><b>1-Course</b></td>
+                <td><b>2-Course</b></td>
+                <td><b>3-Course</b></td>
+                <td><b>4-Course</b></td>
+                <td><b>BirthDate</b></td>
+            </tr>
+            <tr>
+                <td> <input  type="number" th:field="*{marksDTO.course_1}" style="width: 90%;"></td>
+                <td> <input  type="number" th:field="*{marksDTO.course_2}"  style="width: 90%;"></td>
+                <td> <input  type="number" th:field="*{marksDTO.course_3}"  style="width: 90%;"></td>
+                <td> <input  type="number" th:field="*{marksDTO.course_4}"  style="width: 90%;"></td>
+                <td><input  type="date"   th:field="*{birthDate}" required placeholder="Enter your Birthday"></td>
+            </tr>
+        </table>
+
+        <hr>
+
+        <div class="row">
+
+            <div class="col-sm-4" style="height: 120px; overflow-y:auto;">
+                <label>Hobbies</label><br>
+
+                <div class="checkbox" th:each="hobby : ${hobbiesList}" style="overflow-y:auto;">
+                    <label>
+                        <input th:value="${hobby.id}" th:field="*{hobbyId}" type="checkbox"/> <span
+                            th:text="${hobby.name}" th:remove="tag"> </span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="col-sm-4" style="height: 120px; overflow-y:auto;">
+                <label>Companies</label><br>
+
+                <div class="checkbox" th:each="company : ${companiesList}" style="overflow-y:auto;">
+                    <label>
+                        <input th:value="${company.id}" th:field="*{companyId}" type="checkbox"/> <span
+                            th:text="${company.name}" th:remove="tag"> </span>
+                    </label>
+                </div>
+
+            </div>
+            <div class="col-sm-4" style="height: 120px; overflow-y:auto;">
+                <label>Subjects</label><br>
+
+                <div class="checkbox" th:each="subject : ${subjectsList}" style="overflow-y:auto;">
+                    <label>
+                        <input th:value="${subject.id}" th:field="*{subjectId}" type="checkbox"/> <span
+                            th:text="${subject.name}" th:remove="tag"> </span>
+                    </label>
+                </div>
+
+            </div>
+
+        </div>
+        <hr>
+        <div class="buttons-group">
+            <button type="submit">Update Student</button>
+        </div>
+
+    </form>
+</div>
+</body>
+</html>

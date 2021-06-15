@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <style>
+
+        input{
+            background-color: #BDBDBD;
+        }
+
+        table{
+            background-color: #BDBDBD;
+        }
+        select{
+            background-color: #BDBDBD;
+        }
+
+
+    </style>
+</head>
+<body background="../images/main2.jpeg">
+
+<!-- Main Navigation -->
+<nav class="navbar navbar-expand-md navbar-dark bg-primary">
+    <a class="navbar-brand" th:href="@{/}">Graduate Course</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar"
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" th:href="@{/}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/student/}">Students</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/company/}">Companies</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/faculty/}">Faculties</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/province/}">Provinces</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/subject/}">Subjects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/hobby/}">Hobbies</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Content Section -->
+<section layout:fragment="content">
+    <p>This is filled by the content template.</p>
+</section>
+
+<!-- Footer -->
+<footer class="container py-5">
+    <div class="row">
+        <div class="col-md-12">
+            <p class="text-muted"><h5 style="color: #eaeaea"> &copy; 2021 Graduate course. All rights reserved.</h5></p>
+        </div>
+    </div>
+</footer>
+
+<!-- Optional Section -->
+<th:block layout:fragment="optional" />
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" ></script>
+
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/layout}" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.ultraq.net.nz/thymeleaf/layout ">
+<head>
+    <style>
+        a {
+            color: white;
+        }
+        table {
+            width: 60%;
+            margin: auto;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            counter-reset: row-num;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+        }
+
+        button {
+            color: white;
+            border-radius: 15px;
+
+            outline: none;
+            background-color: #03A9F4;
+            padding: 8px 20px;
+            cursor: pointer;
+            border: 1px solid black;
+        }
+
+        textarea {
+            padding: 10px 30px;
+        }
+
+        .buttons-group {
+            width: 100%;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div layout:fragment="content">
+    <table>
+        <thead>
+        <tr>
+            <th>ID:</th>
+            <th>Name</th>
+            <th>View</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="company : ${companies}">
+            <td th:text="${company.id}"></td>
+            <td th:text="${company.name}"></td>
+            <td><a th:href="${'/company/show/' + company.id}">View</a></td>
+            <td><a th:href="${'/company/edit/' + company.id}">Edit</a></td>
+            <td><a th:href="${'/company/delete/' + company.id}">Delete</a></td>
+        </tr>
+        </tbody>
+
+    </table>
+    <div class="buttons-group">
+        <button><a href="/company/new">Add New Company</a></button>
+    </div>
+</div>
+
+</body>
+</html>
