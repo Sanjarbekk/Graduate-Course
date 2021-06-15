@@ -7,16 +7,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="apextech" />
+        <module name="example" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="apextech" target="15" />
+      <module name="example" target="15" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="apextech" options="-parameters" />
+      <module name="example" options="-parameters" />
     </option>
   </component>
 </project>
